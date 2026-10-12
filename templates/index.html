@@ -30,13 +30,16 @@
             <td>hojas</td>
         </tr>
     </table>
-    <table>
+    <table id="animals-table">
+        <thead>
         <tr>
             <th>Nombre</th>
             <th>Especie</th>
             <th>Edad</th>
             <th>Comida favorita</th>
         </tr>
+        </thead>
+        <tbody>
         {% for animal in animals %}
         <tr>
             <td>{{ animal.nombre }}</td>
@@ -45,9 +48,29 @@
             <td>{{ animal.comida_favorita }}</td>
         </tr>
         {% endfor %}
+        </tbody>
     </table>
-    <button id="btn-add-animal"> AGREGAR ANIMAL</button>
+    <details id="animal-menu">
+        <summary id="btn-show-animal-form">
+            AGREGAR ANIMAL
+        </summary>
+        <form id="animal-form">
+            <div id="animal-fields">
+                <label for="animal-name">Nombre</label>
+                <input id="animal-name" name="nombre" type="text">
 
+                <label for="animal-species">Especie</label>
+                <input id="animal-species" name="especie" type="text">
 
+                <label for="animal-age">Edad</label>
+                <input id="animal-age" name="edad" type="number" min="0">
+
+                <label for="animal-food">Comida favorita</label>
+                <input id="food" name="comida_favorita" type="text">
+
+                <button id="btn-add-animal" type="submit">CONFIRMAR</button>
+            </div>
+        </form>
+    </details>
     </body>
 </html>
