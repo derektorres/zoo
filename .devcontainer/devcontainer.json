@@ -1,0 +1,6 @@
+{
+  "name": "zoo-dev",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "web",
+  "workspaceFolder": "/app"
+}

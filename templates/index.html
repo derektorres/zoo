@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Zoologico animalesco</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+    <body>
+        <h1>Bienvenido</h1>
+
+    <h1>TABLA DE ANIMALES</h1>   
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Especie</th>
+            <th>Edad</th>
+            <th>Comida favorita</th>
+        </tr>
+        <tr>
+            <td>elefante</td>
+            <td>pepe</td>
+            <td>10</td>
+            <td>planta</td>
+        </tr>
+        <tr>
+            <td>jirafa</td>
+            <td>jose</td>
+            <td>5</td>
+            <td>hojas</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Especie</th>
+            <th>Edad</th>
+            <th>Comida favorita</th>
+        </tr>
+        {% for animal in animals %}
+        <tr>
+            <td>{{ animal.nombre }}</td>
+            <td>{{ animal.especie }}</td>
+            <td>{{ animal.edad }}</td>
+            <td>{{ animal.comida_favorita }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <button id="btn-add-animal"> AGREGAR ANIMAL</button>
+
+
+    </body>
+</html>

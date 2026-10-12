@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f4f9e9, #dff3c2);
+    color: #1f3a2d;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    margin-bottom: 24px;
+    color: #2d6a4f;
+    text-align: center;
+}
+
+table {
+    width: min(700px, 100%);
+    margin: 0 auto;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 8px 25px rgba(28, 76, 52, 0.18);
+}
+
+th,
+td {
+    padding: 15px 18px;
+    text-align: left;
+    border-bottom: 1px solid #dfecc9;
+}
+
+th {
+    background: #2e7d32;
+    color: #ffffff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+tbody tr:nth-child(even) {
+    background: #f4f9e9;
+}
+
+tbody tr:nth-child(odd) {
+    background: #ffffff;
+}
+
+tbody tr:hover {
+    background: #dff3c2;
+    transition: background-color 0.2s ease;
+}
+
+button {
+    display: block;
+    margin: 24px auto 0;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(46, 125, 50, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #256e2a, #3d8b40);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.32);
+}
+
+button:focus {
+    outline: 3px solid #a5d6a7;
+    outline-offset: 3px;
+}
+
+@media (max-width: 500px) {
+    body {
+        padding: 24px 12px;
+    }
+
+    th,
+    td {
+        padding: 12px 10px;
+        font-size: 0.9rem;
+    }
+
+    button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+    
