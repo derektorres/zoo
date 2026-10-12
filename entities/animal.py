@@ -9,6 +9,7 @@ class Animal:
         self.age = age
         self.food = food
 
+    @staticmethod
     def save(name, species, age, food):
         try:
             connection = get_connection()

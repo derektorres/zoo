@@ -76,6 +76,95 @@ button:focus {
     outline-offset: 3px;
 }
 
+#animal-menu {
+    width: min(700px, 100%);
+    margin: 24px auto 0;
+}
+
+#btn-show-animal-form {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 12px 24px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    box-shadow: 0 6px 16px rgba(46, 125, 50, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+#btn-show-animal-form::-webkit-details-marker {
+    display: none;
+}
+
+#btn-show-animal-form::after {
+    content: "+";
+    margin-left: 10px;
+    font-size: 1.2rem;
+}
+
+#animal-menu[open] #btn-show-animal-form {
+    margin-bottom: 16px;
+    border-radius: 18px 18px 0 0;
+}
+
+#animal-menu[open] #btn-show-animal-form::after {
+    content: "\2212";
+}
+
+#btn-show-animal-form:hover {
+    background: linear-gradient(135deg, #256e2a, #3d8b40);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.32);
+}
+
+#btn-show-animal-form:focus-visible {
+    outline: 3px solid #a5d6a7;
+    outline-offset: 3px;
+}
+
+#animal-form {
+    padding: 24px;
+    border: 1px solid #dfecc9;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 8px 25px rgba(28, 76, 52, 0.18);
+}
+
+#animal-fields {
+    display: grid;
+    grid-template-columns: minmax(120px, 1fr) 2fr;
+    align-items: center;
+    gap: 14px 18px;
+}
+
+#animal-fields label {
+    font-weight: bold;
+}
+
+#animal-fields input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #b7d4b0;
+    border-radius: 8px;
+    color: #1f3a2d;
+    font: inherit;
+}
+
+#animal-fields input:focus {
+    border-color: #2e7d32;
+    outline: 3px solid #dff3c2;
+}
+
+#btn-add-animal {
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+
 @media (max-width: 500px) {
     body {
         padding: 24px 12px;
@@ -90,6 +179,19 @@ button:focus {
     button {
         width: 100%;
         max-width: 300px;
+    }
+
+    #animal-fields {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    #animal-fields input {
+        margin-bottom: 8px;
+    }
+
+    #btn-add-animal {
+        margin-top: 12px;
     }
 }
     
