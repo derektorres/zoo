@@ -11,46 +11,43 @@ class Animal:
 
     @staticmethod
     def save(name, species, age, food):
+        connection = get_connection()
         try:
-            connection = get_connection()
             cursor = connection.cursor()
-
-            sql = """INSERT INTO animales (name, species, age, food) VALUES (%s, %s, %s, %s)"""
-
-            cursor.execute(sql, (name, species, age, food))
-            connection.commit()
-            cursor.close()
+            try:
+                sql = """INSERT INTO animales (name, species, age, food) VALUES (%s, %s, %s, %s)"""
+                cursor.execute(sql, (name, species, age, food))
+                connection.commit()
+            except Exception:
+                connection.rollback()
+                raise
+            finally:
+                cursor.close()
+        finally:
             connection.close()
-        except Exception as e:
-            print("Error al guardar el animal:", e)
 
+    @staticmethod
     def get_all_animals():
+        connection = get_connection()
         try:
-            connection = get_connection()
             cursor = connection.cursor()
+            try:
+                sql = """SELECT * FROM animales"""
+                cursor.execute(sql)
+                rows = cursor.fetchall()
 
-            sql = """SELECT * FROM animales"""
-            cursor.execute(sql)
-            rows = cursor.fetchall()
+                animals = []
+                for row in rows:
+                    animals.append(Animal(
+                        row[0],
+                        row[1],
+                        row[2],
+                        row[3],
+                        row[4]
+                    ))
 
-            animals = []
-            for row in rows:
-                animals.append(Animal(
-                    row['id'],
-                    row['name'],
-                    row['species'],
-                    row['age'],
-                    row['food']
-                ))
-
-            cursor.close()
+                return animals
+            finally:
+                cursor.close()
+        finally:
             connection.close()
-
-            return animals
-        except Exception as e:
-            print("Error al obtener los animales:", e)
-            return []
-
-
-
-

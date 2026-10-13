@@ -7,7 +7,16 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    try:
+        animals = Animal.get_all_animals()
+        return render_template('index.html', animals=animals)
+    except Exception as e:
+        print("Error al obtener los animales:", e)
+        return render_template(
+            'index.html',
+            animals=[],
+            error="No se pudieron cargar los animales. Revisa la conexión con la base de datos."
+        ), 500
 
 @app.route('/api/animals', methods=["POST"])
 def create_animal():
@@ -18,7 +27,14 @@ def create_animal():
     age = data.get("age")
     food = data.get("food")
 
-    Animal.save(name, species, age, food)
+    try:
+        Animal.save(name, species, age, food)
+    except Exception as e:
+        print("Error al guardar el animal:", e)
+        return jsonify({
+            "success": False,
+            "message": "No se pudo guardar el animal. Revisa la conexión con la base de datos."
+        }), 500
 
     return jsonify({"success": True, "message": "El animal fue creado correctamente."}), 201
 

@@ -1,3 +1,12 @@
+function showAlert(options) {
+    if (window.Swal) {
+        return window.Swal.fire(options);
+    }
+
+    window.alert(`${options.title}\n\n${options.text}`);
+    return Promise.resolve();
+}
+
 function addAnimal(event){
     event.preventDefault();
 
@@ -7,7 +16,7 @@ function addAnimal(event){
     const food = document.getElementById("animal-food").value;
 
     if(name === "") {
-        Swal.fire({
+        showAlert({
             title: 'Nombre del animal no ingresado',
             text: 'Debe ingresar el nombre del animal.',
             icon: 'warning',
@@ -17,7 +26,7 @@ function addAnimal(event){
     }
 
     if(species === "") {
-        Swal.fire({
+        showAlert({
             title: 'Especie del animal no ingresada',
             text: 'Debe ingresar la especie del animal.',
             icon: 'warning',
@@ -27,7 +36,7 @@ function addAnimal(event){
     }
 
     if(age === "") {
-        Swal.fire({
+        showAlert({
             title: 'Edad del animal no ingresada',
             text: 'Debe ingresar la edad del animal.',
             icon: 'warning',
@@ -37,7 +46,7 @@ function addAnimal(event){
     }
 
     if(food === "") {
-        Swal.fire({
+        showAlert({
             title: 'Comida favorita del animal no ingresada',
             text: 'Debe ingresar la comida favorita del animal.',
             icon: 'warning',
@@ -60,7 +69,7 @@ function addAnimal(event){
         body: JSON.stringify(data)
     }). then(response => response.json())
     .then(result =>  {
-        Swal.fire({
+        showAlert({
             title: result.success ? 'Animal agregado' : 'Error al agregar el animal',
             text: result.message,
             icon: result.success ? 'success' : 'error',
