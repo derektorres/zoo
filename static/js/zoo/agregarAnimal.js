@@ -1,6 +1,6 @@
-document.getElementById("btn-add-animal").addEventListener("click");
+function addAnimal(event){
+    event.preventDefault();
 
-function register(){
     const name = document.getElementById("animal-name").value;
     const species = document.getElementById("animal-species").value;
     const age = document.getElementById("animal-age").value;
@@ -77,4 +77,4 @@ function register(){
 
 }
 
-
+document.getElementById("animal-form").addEventListener("submit", addAnimal);
