@@ -17,7 +17,9 @@ class Animal:
             try:
                 sql = """INSERT INTO animales (name, species, age, food) VALUES (%s, %s, %s, %s)"""
                 cursor.execute(sql, (name, species, age, food))
+                nuevo_id = cursor.lastrowid
                 connection.commit()
+                return nuevo_id
             except Exception:
                 connection.rollback()
                 raise
